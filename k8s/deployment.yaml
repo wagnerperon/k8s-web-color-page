@@ -11,16 +11,16 @@ spec:
     metadata:
       labels:
         app: webcolor
-    affinity:
-      nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: karpenter.sh/provisioner-name
-              operator: In
-              values:
-              - provisioner-ng1
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: karpenter.sh/provisioner-name
+                operator: In
+                values:
+                - provisioner-ng1
       containers:
       - name: webcolor
         image: peronw/web-page:green
