@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: webcolor
-        image: fabricioveronez/web-page:green
+        image: peronw/web-page:green
         ports:
         - containerPort: 80
 ---
