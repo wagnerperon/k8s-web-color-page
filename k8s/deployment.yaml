@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: webcolor
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: webcolor
@@ -11,6 +11,16 @@ spec:
     metadata:
       labels:
         app: webcolor
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: karpenter.sh/provisioner-name
+                operator: In
+                values:
+                - provisioner-ng1
     spec:
       containers:
       - name: webcolor
